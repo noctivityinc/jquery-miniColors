@@ -139,9 +139,10 @@ if(jQuery) (function($) {
 				selector
 					.append('<div class="miniColors-colors" style="background-color: #FFF;"><div class="miniColors-colorPicker"><div class="miniColors-colorPicker-inner"></div></div>')
 					.append('<div class="miniColors-hues"><div class="miniColors-huePicker"></div></div>')
+					.append('<div class="miniColors-controls"><button class="miniColors-close">Close</button></div>')
 					.css('display', 'none')
 					.addClass( input.attr('class') );
-				
+
 				// Set background for colors
 				var hsb = input.data('hsb');
 				selector
@@ -166,7 +167,7 @@ if(jQuery) (function($) {
 					.data('huePicker', selector.find('.miniColors-huePicker'))
 					.data('colorPicker', selector.find('.miniColors-colorPicker'))
 					.data('mousebutton', 0);
-				
+
 				$('BODY').append(selector);
 				
 				// Position the selector
@@ -195,7 +196,7 @@ if(jQuery) (function($) {
 				
 				// Prevent text selection in IE
 				selector.on('selectstart', function() { return false; });
-				
+
 				// Hide on resize (IE7/8 trigger this when any element is resized...)
 				if( !$.browser.msie || ($.browser.msie && $.browser.version >= 9) ) {
 					$(window).on('resize.miniColors', function(event) {
@@ -207,6 +208,11 @@ if(jQuery) (function($) {
 					
 					input.data('mousebutton', 1);
 					var testSubject = $(event.target).parents().andSelf();
+
+					if( testSubject.hasClass('miniColors-close') ) {
+						event.preventDefault();
+						hide();
+					}
 					
 					if( testSubject.hasClass('miniColors-colors') ) {
 						event.preventDefault();

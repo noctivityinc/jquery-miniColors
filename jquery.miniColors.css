@@ -11,7 +11,7 @@
 .miniColors-selector {
 	position: absolute;
 	width: 175px;
-	height: 150px;
+	height: 175px;
 	background: white;
 	border: solid 1px #BBB;
 	-moz-box-shadow: 0 0 6px rgba(0, 0, 0, .25);
@@ -27,6 +27,12 @@
 .miniColors-selector.black {
 	background: black;
 	border-color: black;
+}
+
+.miniColors-controls {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
 }
 
 .miniColors-colors {
