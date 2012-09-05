@@ -34,6 +34,7 @@ if(jQuery) (function($) {
 					.data('letterCase', o.letterCase ? o.letterCase : 'uppercase')
 					.data('trigger', trigger)
 					.data('hsb', hsb)
+					.data('closeButton', o.closeButton ? o.closeButton : 'Close')
 					.data('change', o.change ? o.change : null)
 					.data('close', o.close ? o.close : null)
 					.data('open', o.open ? o.open : null)
@@ -139,7 +140,7 @@ if(jQuery) (function($) {
 				selector
 					.append('<div class="miniColors-colors" style="background-color: #FFF;"><div class="miniColors-colorPicker"><div class="miniColors-colorPicker-inner"></div></div>')
 					.append('<div class="miniColors-hues"><div class="miniColors-huePicker"></div></div>')
-					.append('<div class="miniColors-controls"><button class="miniColors-close">Close</button></div>')
+					.append('<div class="miniColors-controls"><button class="miniColors-close">'+input.data('closeButton')+'</button></div>')
 					.css('display', 'none')
 					.addClass( input.attr('class') );
 
@@ -234,8 +235,12 @@ if(jQuery) (function($) {
 					if( testSubject.hasClass('miniColors') ) return;
 					
 					hide(input);
+				}).on('keyup', function  (e) {
+					if (e.keyCode == 27 || e.keyCode == 13) { 
+						hide();
+					}   // esc or enter
 				});
-				
+
 				$(document)
 					.on('mouseup.miniColors touchend.miniColors', function(event) {
 					    event.preventDefault();

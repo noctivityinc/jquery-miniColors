@@ -44,6 +44,7 @@ Methods are called using this syntax:
 * __letterCase__ _[uppercase|lowercase|null]_ - forces the hex value into upper or lowercase
 * __disabled__ _[true|false]_ - sets the disabled status
 * __readonly__ _[true|false]_ - sets the readonly status
+* __closeButton__ _[string value]_ - sets the value of the close button
 * __value__ _(none)_ - gets the current value; guaranteed to return a valid hex color
 * __value__ _[hex value]_ - sets the control's value
 * __destroy__ _(none)_
@@ -63,6 +64,11 @@ Methods are called using this syntax:
 	$([selector]).miniColors({
 		change: function(hex, rgb) { ... }
 	});
+
+### Enhancements for Fork
+
+* Close button support
+* Enter or escape closes the dialog
 
 
 ## Attribution
